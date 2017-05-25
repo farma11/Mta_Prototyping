@@ -2,7 +2,7 @@ import processing.serial.*;
 import processing.sound.*;
 Serial myPort; 
 
-final int sndN = 3; // ボタンの数
+final int sndN = 6; // ボタンの数
 SoundFile files[] = new SoundFile[sndN];
 final int btns[] = {2, 3, 4, 5, 6, 7}; // 各ボタンの値
 int flag;
@@ -13,9 +13,12 @@ void setup(){
   // windowsの場合は Serial.list()[0]に
   
   // ボタンの数を6つまで(files[5]まで)対応できます
-  files[0] = new SoundFile(this, "./default/5.aif");
+  files[0] = new SoundFile(this, "./nakama/cutting_a_onion1.mp3");
   files[1] = new SoundFile(this, "./nakama/cutting_a_napa.mp3");
   files[2] = new SoundFile(this, "./default/1.aif");
+  files[3] = new SoundFile(this, "./default/1.aif");
+  files[4] = new SoundFile(this, "./default/1.aif");
+  files[5] = new SoundFile(this, "./default/1.aif");
 
   flag = 0;
 }
@@ -27,7 +30,7 @@ void draw(){
   }
   
   // 各ボタンが押された場合の設定
-  for(int i = 0; i < btns.length; i++){
+  for(int i = 0; i < sndN; i++){
     if(flag == btns[i]){ // ボタン1
       fill(255, 0, 0);
       files[i].play();
